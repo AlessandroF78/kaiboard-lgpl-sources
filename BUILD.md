@@ -44,9 +44,14 @@ which stood in function `nativeCommit` (line 146 of the older file).
 - CMake 3.28.3, Ninja 1.11.1, pkg-config 1.8.1, extra-cmake-modules (ECM) from the Ubuntu package.
 - Static libraries and headers of the other parts, from https://github.com/fcitx5-android/prebuilt at commit
   `0bb1f2684837ec0b2e56514e3ec7e58270bcd900` (folders `boost/`, `zstd/`, `marisa/`, `libintl-lite/`; they are not
-  LGPL and are not copied here). Of these, only code of `libzstd.a` and of the Boost headers ends up in the
-  library; `libmarisa.a`, `libintl.a`, `libboost_iostreams.a` and `libboost_container.a` are on the link line but
-  no member of them is linked in (linker map of 2026-11-26).
+  LGPL and are not in the file tree of this repository). Of these, only code of `libzstd.a` and of the Boost
+  headers ends up in the library; `libmarisa.a`, `libintl.a`, `libboost_iostreams.a` and `libboost_container.a`
+  are on the link line but no member of them is linked in (linker map of 2026-11-26).
+- A copy of the folders used from that commit (Boost 1.90.0, zstd 1.5.7, marisa-trie, libintl-lite, for
+  arm64-v8a), unchanged and with their licence texts, is attached to the release `app-140` of this repository:
+  `kaiboard-lgpl-prebuilt-parts-0bb1f268.tar.gz`, 11165510 bytes,
+  SHA-256 `34316acf32d7e84713045dd94f8cbe27289ab39d2c8610f48b4af85913470837`. Unpacked, its top folder can be
+  used as `$S/prebuilt` below.
 
 ### Layout used below
 
@@ -54,7 +59,7 @@ which stood in function `nativeCommit` (line 146 of the older file).
     $S/ndk-linux                   # the unpacked NDK
     $S/libime-src                  # = libpinyin-jni/libime of this repository
     $S/fcitx5-src                  # = libpinyin-jni/fcitx5 of this repository
-    $S/prebuilt                    # the checkout of fcitx5-android/prebuilt
+    $S/prebuilt                    # the checkout of fcitx5-android/prebuilt, or the unpacked release archive
     $S/build                       # build output
     NDK=$S/ndk-linux; PREBUILT=$S/prebuilt; BUILD=$S/build; INSTALL=$BUILD/install
 
@@ -89,6 +94,9 @@ folder `boost_<name>` holding a copy of its `*.cmake` files.
     Version: 1.5.5
     Libs: -L/tmp/libime_scratch/prebuilt/zstd/arm64-v8a/lib -lzstd
     Cflags: -I/tmp/libime_scratch/prebuilt/zstd/arm64-v8a/include
+
+This is the file as it was used for the build, line for line. Its `Version: 1.5.5` line does not state the
+version of the library: the library in `zstd/arm64-v8a` is zstd 1.5.7 (`zstd.h`).
 
 ### D. libime (libIMECore.a, libIMEPinyin.a)
 
