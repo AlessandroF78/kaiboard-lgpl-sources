@@ -1,0 +1,6 @@
+libime    https://github.com/fcitx/libime            8b400d014b992f814522d07d18f32da7e893789f   (libpinyin-jni/libime)
+kenlm     https://github.com/kpu/kenlm               4cb443e60b7bf2c0ddf3c745378f76cb59e254e5   (libkenlm-jni/kenlm with seven changed files; libpinyin-jni/libime/src/libime/core/kenlm unchanged)
+fcitx5    https://github.com/fcitx/fcitx5            04eff1334eb2eab45245c492bf5b85be4c4eda6b   (libpinyin-jni/fcitx5, without the submodule third_party/yoga)
+prebuilt  https://github.com/fcitx5-android/prebuilt 0bb1f2684837ec0b2e56514e3ec7e58270bcd900   (not copied: Boost, zstd, marisa, libintl-lite, the Chinese data files)
+ndk       android-ndk-r28b-linux.zip  revision 28.1.13356709  sha1 f574d3165405bd59ffc5edaadac02689075a729f   (libpinyin-jni.so)
+ndk       25.2.9519653, through the Gradle build of the app   (libkenlm-jni.so)
